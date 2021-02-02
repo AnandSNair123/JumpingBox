@@ -2,8 +2,7 @@ var box1,box2,box3,box4;
 var play;
 var rand;
 var music;
-var start = 0,end = 1;
-var gamestate = start;
+
 
 function preload(){
     music = loadSound("music.mp3");
@@ -25,50 +24,45 @@ play.velocityX = 5;
 play.velocityY = 5;
 }
 function draw(){
-    
     background("gray");
-    if(gamestate === start){
-        edges = createEdgeSprites();
-        rand = Math.round(random(1,4));
+    rand = Math.round(random(1,4));
     music.loop();
-    console.log(music.isPlaying());
-        play.bounceOff(edges);
+    if(play.isTouching(box1) && rand === 1){
+        play.velocityX = 0;
+        play.velocityY = 0;
+        music.stop();
+        }
+
+    if(play.isTouching(box2) && rand === 2){
+            play.velocityX = 0;
+            play.velocityY = 0;
+            music.stop();
+            }
+            if(play.isTouching(box3) && rand === 3){
+                play.velocityX = 0;
+                play.velocityY = 0;
+                music.stop();
+                }
+                if(play.isTouching(box4) && rand === 4){
+                    play.velocityX = 0;
+                    play.velocityY = 0;
+                    music.stop();
+                    }
+                    console.log(rand);
+    
+    drawSprites();
+    edges = createEdgeSprites();
+    play.bounceOff(edges);
     play.bounceOff(box1);
     play.bounceOff(box2);
     play.bounceOff(box3);
     play.bounceOff(box4);
-        
-        if(play.isTouching(box1) && rand === 1){
-            play.velocityX = 0;
-            play.velocityY = 0;
-            gamestate = end;
-            }
-    
-        if(play.isTouching(box2) && rand === 2){
-                play.velocityX = 0;
-                play.velocityY = 0;
-                gamestate = end;
-                }
-                if(play.isTouching(box3) && rand === 3){
-                    play.velocityX = 0;
-                    play.velocityY = 0;
-                    gamestate = end;
-                    }
-                    if(play.isTouching(box4) && rand === 4){
-                        play.velocityX = 0;
-                        play.velocityY = 0;
-                        gamestate = end;
-                        }
-                        console.log(rand);
-    }
-    if(gamestate === end){
-        music.stop();
-    }
-    
-    drawSprites();
-    
-    
 
 
 
+
+}
+function mouseClicked(){
+    play.velocityX = -5;
+    play.velocityY = -5;
 }
