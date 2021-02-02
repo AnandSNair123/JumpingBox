@@ -27,26 +27,41 @@ function draw(){
     background("gray");
     rand = Math.round(random(1,4));
     music.loop();
+    if(play.isTouching(box1)){
+        play.shapeColor  = "darkblue";
+    }
+
+    if(play.isTouching(box2)){
+        play.shapeColor  = "darkorange";
+    }
+
+    if(play.isTouching(box3)){
+        play.shapeColor  = "darkred";
+    }
+
+    if(play.isTouching(box4)){
+        play.shapeColor  = "darkgreen";
+    }
     if(play.isTouching(box1) && rand === 1){
         play.velocityX = 0;
         play.velocityY = 0;
-        music.stop();
+        
         }
 
     if(play.isTouching(box2) && rand === 2){
             play.velocityX = 0;
             play.velocityY = 0;
-            music.stop();
+            
             }
             if(play.isTouching(box3) && rand === 3){
                 play.velocityX = 0;
                 play.velocityY = 0;
-                music.stop();
+                
                 }
                 if(play.isTouching(box4) && rand === 4){
                     play.velocityX = 0;
                     play.velocityY = 0;
-                    music.stop();
+                    
                     }
                     console.log(rand);
     
